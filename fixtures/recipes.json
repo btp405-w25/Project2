@@ -1,0 +1,173 @@
+[
+    {
+        "model": "recipes.recipe",
+        "pk": 1,
+        "fields": {
+            "name": "Carrot Soup",
+            "main_ingredient": 1,
+            "ingredients": "Carrots, Onions, Potatoes, Garlic, Salt, Pepper",
+            "instructions": [
+                "Peel and chop the carrots, onions, and potatoes.",
+                "Heat a large pot with some olive oil.",
+                "Add the onions and garlic, sauté until soft.",
+                "Add the chopped carrots and potatoes to the pot.",
+                "Add water to cover the vegetables and bring to a boil.",
+                "Reduce heat and let it simmer until the vegetables are soft.",
+                "Use an immersion blender to blend the soup until smooth.",
+                "Add salt and pepper to taste.",
+                "Serve hot with a garnish of fresh herbs.",
+                "Enjoy your warm and comforting carrot soup."
+            ],
+            "dietary_preferences": "vegetarian",
+            "carbon_footprint": 0.5
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 2,
+        "fields": {
+            "name": "Maple Syrup Pancakes",
+            "main_ingredient": 5,
+            "ingredients": "Maple Syrup, Flour, Eggs, Milk, Butter, Baking Powder, Salt",
+            "instructions": [
+                "In a bowl, mix flour, baking powder, and salt.",
+                "In another bowl, whisk together eggs, milk, and melted butter.",
+                "Combine the wet and dry ingredients.",
+                "Stir until smooth.",
+                "Heat a pan and lightly grease with butter.",
+                "Pour batter onto the pan to form small circles.",
+                "Cook until bubbles form, then flip to cook the other side.",
+                "Repeat for all pancakes.",
+                "Serve the pancakes with maple syrup on top.",
+                "Enjoy your sweet and fluffy breakfast!"
+            ],
+            "dietary_preferences": "vegetarian",
+            "carbon_footprint": 0.3
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 3,
+        "fields": {
+            "name": "Wild Blueberry Jam",
+            "main_ingredient": 6,
+            "ingredients": "Wild Blueberries, Sugar, Lemon Juice, Pectin",
+            "instructions": [
+                "In a large pot, combine wild blueberries and sugar.",
+                "Heat the mixture over medium heat, stirring occasionally.",
+                "Add lemon juice and pectin.",
+                "Bring the mixture to a boil, then reduce the heat to a simmer.",
+                "Let the jam simmer for about 15 minutes, stirring frequently.",
+                "Test the consistency by placing a small spoonful on a cold plate.",
+                "Once thickened, remove from heat.",
+                "Pour the jam into sterilized jars while still hot.",
+                "Seal the jars and let them cool.",
+                "Store the jam in a cool, dark place and enjoy later!"
+            ],
+            "dietary_preferences": "vegan",
+            "carbon_footprint": 0.2
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 4,
+        "fields": {
+            "name": "Lobster Roll",
+            "main_ingredient": 9,
+            "ingredients": "Lobster, Mayonnaise, Celery, Lemon, Hot Dog Buns, Butter",
+            "instructions": [
+                "Boil the lobster in salted water until cooked.",
+                "Remove the meat from the shell and chop into bite-sized pieces.",
+                "In a bowl, mix lobster meat with mayonnaise, chopped celery, and lemon juice.",
+                "Toast the hot dog buns with butter in a pan until golden brown.",
+                "Fill the buns with the lobster mixture.",
+                "Garnish with extra lemon wedges.",
+                "Serve the lobster rolls immediately.",
+                "Enjoy the fresh and flavorful lobster rolls!"
+            ],
+            "dietary_preferences": "none",
+            "carbon_footprint": 1.0
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 5,
+        "fields": {
+            "name": "Tomato Salad",
+            "main_ingredient": 4,
+            "ingredients": "Tomatoes, Olive Oil, Salt, Pepper, Basil",
+            "instructions": [
+                "Wash and chop the tomatoes.",
+                "In a bowl, toss the chopped tomatoes with olive oil, salt, and pepper.",
+                "Add fresh basil leaves for extra flavor.",
+                "Stir the ingredients to combine.",
+                "Serve in a bowl and drizzle with more olive oil if desired.",
+                "Garnish with extra basil.",
+                "Enjoy your refreshing tomato salad!"
+            ],
+            "dietary_preferences": "vegan",
+            "carbon_footprint": 0.1
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 6,
+        "fields": {
+            "name": "Cabbage Stir-Fry",
+            "main_ingredient": 7,
+            "ingredients": "Cabbage, Soy Sauce, Garlic, Ginger, Olive Oil, Sesame Seeds",
+            "instructions": [
+                "Slice the cabbage into thin strips.",
+                "Heat olive oil in a pan over medium heat.",
+                "Add garlic and ginger, sauté until fragrant.",
+                "Add the cabbage and stir-fry until tender.",
+                "Pour soy sauce over the cabbage and continue stir-frying.",
+                "Garnish with sesame seeds for a nice crunch.",
+                "Serve hot and enjoy your delicious cabbage stir-fry!"
+            ],
+            "dietary_preferences": "vegetarian",
+            "carbon_footprint": 0.4
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 7,
+        "fields": {
+            "name": "Chanterelle Mushroom Risotto",
+            "main_ingredient": 8,
+            "ingredients": "Chanterelle Mushrooms, Arborio Rice, Vegetable Broth, Parmesan, White Wine, Butter",
+            "instructions": [
+                "Sauté the chanterelle mushrooms in butter until golden.",
+                "In a separate pot, cook the arborio rice with vegetable broth.",
+                "Once the rice is cooked, stir in the sautéed mushrooms.",
+                "Add white wine and let it reduce.",
+                "Stir in parmesan cheese until melted.",
+                "Continue stirring until the risotto reaches a creamy consistency.",
+                "Serve the risotto with extra parmesan on top.",
+                "Garnish with herbs if desired.",
+                "Enjoy this rich and creamy mushroom risotto!"
+            ],
+            "dietary_preferences": "vegetarian",
+            "carbon_footprint": 0.6
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 8,
+        "fields": {
+            "name": "Corn on the Cob",
+            "main_ingredient": 10,
+            "ingredients": "Corn, Butter, Salt, Pepper",
+            "instructions": [
+                "Boil or grill the corn until fully cooked.",
+                "Brush the corn with melted butter.",
+                "Sprinkle with salt and pepper to taste.",
+                "Serve the corn hot.",
+                "Enjoy the simple, delicious taste of corn on the cob!"
+            ],
+            "dietary_preferences": "vegan",
+            "carbon_footprint": 0.3
+        }
+    }
+  ]
+  
