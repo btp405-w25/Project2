@@ -1,0 +1,90 @@
+<!--NECESSARY to find css file -->
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- to use start icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'polls/star_rating.css'%}">
+
+    <title>Rate Vendor</title>
+</head>
+<body>
+    
+
+<div class="container mt-5">
+    <h1>Rate a Vendor's Delivery</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Vendor</label>
+            {{ form.vendor }}
+        </div>
+        <br/>
+
+        <div class="mb-3">
+            <label class="form-label">Rating</label>
+            <div class="rating-in-stars">
+            <br/>
+            {%for i in form.rating%} <!--i = a radio button -->
+                {% if forloop.counter <= 5 %} <!-- so that 6 enties dont appear, just 5 review https://stackoverflow.com/questions/11481499/django-iterate-number-in-for-loop-of-a-template -->
+                
+                <!--WITHOUT THIS THE FORM WILL NOT SAVE UR VAL, its the radio tag-->
+                <!--this generates the actual radio button input elem-->
+                {{i.tag}}
+                <!--label for="{{i.id_for_label}}" = CONNECTS THE LABEL TO THE HIDDEN RADIO BUTTON -->
+                <!-- fa fa-star = star icon from font awesome the if statement add the checked class if user clicks on it -->
+                <label for="{{i.id_for_label}}"> <i class="fa fa-star{%if i.choice_value <= form.rating.value%} checked{%endif%}"></i></label>
+                {%endif%}
+                <!--another way but then not saved
+                    <div class="rating">
+                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                    </div>
+                 -->
+            {%endfor%}
+            </div>
+        </div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+        <div class="mb-3">
+            <label class="form-label">Upload Image</label>
+            <br/>
+            {{ form.image }}
+        </div>
+        <br/>
+        <br/>
+        <div class="mb-3">
+            <label class="form-label">Review</label>
+            <br/>
+            {{ form.review_text }}
+        </div>
+        <br/>
+
+        <div class="mb-3">
+            <label class="form-label">Delivery Date</label>
+            <br/>
+            {{ form.delivery_date }}
+        </div>
+        <br/>
+
+        <div class="mb-3">
+            <label class="form-label">Is the Packaging Eco-friendly?</label>
+            
+            <label class="form-check-label">
+                <br/>
+                {{ form.eco_friendly_packaging }} Eco-Friendly Packaging
+            </label>
+        </div>
+        <br/>
+        <br/>
+        <button  class="button-17" role="button" type="submit">Submit Rating</button>
+    </form>
+</div>
+</body>
+</html>
