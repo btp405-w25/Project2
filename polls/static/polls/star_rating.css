@@ -1,7 +1,6 @@
 .h1 {
   font-size: 1.5em;
   font-family:Arial, Helvetica, sans-serif;
-
 }
 .form-label{
   display: block; 
@@ -16,8 +15,6 @@
 }
 
 /*from https://stackoverflow.com/questions/65466978/star-rating-component-fill-all-previous-stars-on-hover*/
-
-
 fieldset, label { margin: 0; padding: 0; }
 
         /* Star Rating Widget */
