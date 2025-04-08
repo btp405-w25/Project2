@@ -55,30 +55,28 @@ class Choice(models.Model):
 
 
 
-class Vendor(models.Model):
-    name = models.CharField(max_length=255)
 
+class Vendor(models.Model):
+    name = models.CharField(max_length=100)
     def __str__(self):
         return self.name
 
 
 class DeliveryRating(models.Model):
-    """had to add bc of IntegrityError at /polls/delivery_rating/
-    NOT NULL constraint failed: polls_deliveryrating.user_id"""
-    # allows user field to be optoonnal 
-    #user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+   #ERRORS with this, the list of stars is inverted, when I cclick one start I get 5 stars and when I do 5 stars, it says I chose 1 star
+   #RATING_CHOICES = [(i, f"{i} ⭐") for i in range(1, 6)] 
+   #CORRECT bc the last 5 = 5th star is at the top of the list 
+   #the star = just gets displayed in the user input data 
+    RATING_CHOICES = [(i, f"{i} ⭐") for i in range(5, 0,-1)] #reverses the list to so last star = 5 stars, it generates 5 nums from 5 to 1, and decreasesthe num by -1 eacg time
 
-    RATING_CHOICES = [(i, str(i)) for i in range(1, 6)]  # 1 to 5 stars
-
-    vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE, related_name="ratings")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    rating = models.IntegerField(choices=RATING_CHOICES)
-    review_text = models.TextField(blank=True, null=True)
+    vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE)
+    rating = models.IntegerField(choices=RATING_CHOICES)  
+    review_text = models.TextField(blank=True)
     delivery_date = models.DateField()
     eco_friendly_packaging = models.BooleanField(default=False)
-    #lets the user upload an image, upload_to="ratings/ = IS WHERE THE IMG GETS STORED, blank=True  = means field is optional, null=True = means u can store nulll in the database
-    image = models.ImageField(upload_to="ratings/", blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to='ratings/', blank=True, null=True)
 
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return f"{self.vendor.name} - {self.rating} Stars"
+        return f"{self.user} rated {self.vendor} - {self.rating}⭐"

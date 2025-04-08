@@ -25,6 +25,7 @@ class Form(forms.Form):  #class inherits forms.Form
 #DeliveryRating = from my models.py 
 
 from django import forms 
+from . import models 
 from .models import DeliveryRating, Vendor # import  the 2 models from the app's models.py file 
 from django.contrib.auth.models import User
 from .models import DeliveryRating  # Import your model here
@@ -49,6 +50,7 @@ class DeliveryRatingForm(forms.ModelForm): #creates a form class that is linked 
     verbose_name, and a lot of other options. It’s completely optional to add a Meta class to your model.
     """
     class Meta: # nested class that configures how the form behaves 
+        #DeliveryRating = a class in models.py 
         model = DeliveryRating #says that the form is based on the DeliveryRating model
         #all fields in the form 
         fields = ["vendor", "rating", "review_text", "delivery_date", "eco_friendly_packaging", "image"]
@@ -56,8 +58,17 @@ class DeliveryRatingForm(forms.ModelForm): #creates a form class that is linked 
         widgets = {
             "delivery_date": forms.DateInput(attrs={"type": "date"}),
             #doesnt xactly work, star doesnt work 
-            "rating": forms.RadioSelect(choices=[(i, f"{i} ⭐") for i in range(1, 6)]),
+            "rating": forms.RadioSelect(),
         }
+
+
+#WITHOUT THIS I GOT ISSUES AND ERRORS WHEN SUBMITTING 5 stars
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs) # calls the parent class init method 
+        #customize the rating field = "self.fields['rating'].widget.choices" = ACCESES the input field for the rating = aka the stars
+        #= self._meta.model.RATING_CHOICES = GETS THE MODEL associated with this ModelForm (aka: Deliveryrating), RATING_CHOICES = is the choice tuple defined in the model
+        self.fields['rating'].widget.choices = self._meta.model.RATING_CHOICES
+
 
     """had to add bc of IntegrityError at /polls/delivery_rating/
     NOT NULL constraint failed: polls_deliveryrating.user_id"""
@@ -68,5 +79,5 @@ class DeliveryRatingForm(forms.ModelForm): #creates a form class that is linked 
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['user'].required = False  # Make the user field optional
+        self.fields['user'].required = False  # Make the user field optional"
         """

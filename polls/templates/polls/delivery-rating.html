@@ -2,6 +2,7 @@
 {%load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,13 +11,23 @@
     <link rel="stylesheet" href="{% static 'polls/star_rating.css'%}">
 
     <title>Rate Vendor</title>
+
 </head>
 <body>
+    <nav>
+        <h3>GreenPlate Market</h3>
+        <div>
+            <!--CHANGE WHEN I CAN ACTUALLY ROUTE TO THOSE PAGES -- = ex: href="url 'index'" -->
+            <a>About</a>
+            <a>Recipes</a>
+            <a>Ingredients</a>        
+        </div>
+    </nav>
     
 
 <div class="container mt-5">
     <h1>Rate a Vendor's Delivery</h1>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data"> <!--NECESSARY TO SUBMIT THINGS LIKE IMAGES enctype="multipart/form-data"-->
         {% csrf_token %}
         <div class="mb-3">
             <label class="form-label">Vendor</label>
@@ -83,7 +94,11 @@
         </div>
         <br/>
         <br/>
-        <button  class="button-17" role="button" type="submit">Submit Rating</button>
+        <div class="the-bttns">
+            <button  class="button-17" role="button" type="submit">Submit</button>
+            <!--CHANGE WHERE TO NAVIGATES TO THE ACTUAL HOMEPAGE LATER */-->
+            <a href="/" class="button-18" role="button">Discard</a>
+        </div>
     </form>
 </div>
 </body>

@@ -7,6 +7,7 @@ from django.utils import timezone
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import DeliveryRating, Vendor
+from . import forms
 from .forms import DeliveryRatingForm
 
 
@@ -86,6 +87,8 @@ def delivery_rating(request):
 """
 
 #for later I will make  login required 
+# LAter I can specify the url, ex: 
+# @login_required(lgin_url="/users/login/")
 @login_required
 def delivery_rating(request):
     if request.method == "POST": #if form submission happens 
