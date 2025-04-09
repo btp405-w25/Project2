@@ -1,5 +1,3 @@
-from django.http import JsonResponse
-from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.response import Response
 from .models import Ingredient, Recipe
@@ -8,6 +6,7 @@ from .serializer import IngredientSerializer, RecipeSerializer
 class IngredientViewSet(viewsets.ModelViewSet):
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
+    permission_classes = []
 
     def list(self, request):
         location = request.GET.get('location', None)
@@ -23,7 +22,6 @@ class IngredientViewSet(viewsets.ModelViewSet):
         else:
             ingredients = Ingredient.objects.all()
 
-        # Ensure we're passing a queryset of Ingredient objects to the serializer
         serializer = self.get_serializer(ingredients, many=True)
         return Response(serializer.data)
 
@@ -32,11 +30,11 @@ class IngredientViewSet(viewsets.ModelViewSet):
 class RecipeViewSet(viewsets.ModelViewSet):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
+    permission_classes = [] 
 
     def get_queryset(self):
         location = self.request.query_params.get('location', None)
         season = self.request.query_params.get('season', None)
-
         queryset = super().get_queryset()
 
         if location and season:
@@ -51,9 +49,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
         queryset = self.get_queryset()
         serializer = self.get_serializer(queryset, many=True)
 
-        # Modify ingredients before sending response
         data = serializer.data
         for recipe in data:
             recipe['ingredients'] = recipe['ingredients'].split(",") if recipe['ingredients'] else []
-        
         return Response(data)

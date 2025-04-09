@@ -2,8 +2,8 @@ from django.db import models
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)
-    season = models.CharField(max_length=50)  # Example: 'Spring', 'Summer'
-    location = models.CharField(max_length=100)  # Example: 'California'
+    season = models.CharField(max_length=50)  
+    location = models.CharField(max_length=100) 
 
     def __str__(self):
         return self.name
@@ -29,9 +29,6 @@ class Recipe(models.Model):
     
     @classmethod
     def get_seasonal_recipes(cls, location, season):
-        """
-        Get seasonal recipes based on location and season.
-        """
         # Filter ingredients based on location and season
         available_ingredients = Ingredient.objects.filter(
             location=location,

@@ -19,6 +19,14 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # Your app's routes (like recipe APIs)
     path('', include('recipes.urls')),
+
+    # User auth (registration, login, logout)
+    path('api/auth/', include('djoser.urls')),
+    path('api/auth/', include('djoser.urls.authtoken')),
+
+    path('api/auth/', include('accounts.urls')),
 ]
 
