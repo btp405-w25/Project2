@@ -17,16 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Your app's routes (like recipe APIs)
     path('', include('recipes.urls')),
+    path('polls/', include('polls.urls')),
 
     # User auth (registration, login, logout)
     path('api/auth/', include('djoser.urls')),
     path('api/auth/', include('djoser.urls.authtoken')),
 
     path('api/auth/', include('accounts.urls')),
+   
 ]
 
