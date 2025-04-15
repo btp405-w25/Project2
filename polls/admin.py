@@ -1,21 +1,8 @@
 from django.contrib import admin
 
-
-from .models import Choice, Question
 from .models import DeliveryRating
 
 
-class ChoiceInline(admin.StackedInline):
-    model = Choice
-    extra = 3
-
-
-class QuestionAdmin(admin.ModelAdmin):
-    fieldsets = [
-        (None, {"fields": ["question_text"]}),
-        ("Date information", {"fields": ["pub_date"], "classes": ["collapse"]}),
-    ]
-    inlines = [ChoiceInline]
 
 class DeliveryRatingAdmin(admin.ModelAdmin): # admin.ModelAdmin) = django class that controls how models behave in django 
     #the names of columns = aka the fields that appear in my admin 
@@ -27,5 +14,4 @@ class DeliveryRatingAdmin(admin.ModelAdmin): # admin.ModelAdmin) = django class 
     search_fields = ('user__username', 'review_text')
     readonly_fields = ('created_at',) # shows the  created date that the review was submiteed but does not let me edit it 
 
-admin.site.register(Question, QuestionAdmin)
 admin.site.register(DeliveryRating, DeliveryRatingAdmin) #DeliveryRatingAdmin= name of class made in this file 

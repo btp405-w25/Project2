@@ -17,6 +17,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.views import APIView
 
+
 @api_view(['GET'])
 def delivery_rating_detail_api(request, rating_id):
     """API endpoint to view a specific delivery rating."""

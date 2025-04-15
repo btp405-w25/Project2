@@ -4,6 +4,10 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import SeasonalIngredients from "./components/SeasonalIngredients";
 import RateVendorForm from "./components/RateVendorForm";
+import FoodList from "./components/FoodList"; // Import FoodList
+import FoodDetail from "./components/FoodDetail"; // Import FoodDetail
+import CertificationDetail from "./components/CertificationDetail"; // Import CertificationDetail
+import Home from "./components/Home";
 import {
   BrowserRouter as Router,
   Routes,
@@ -17,14 +21,14 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Navbar />{" "}
-        {/* Navbar doesn't need setCurrentPage anymore if using Link */}
+        <Navbar />
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route
-            path="/"
+            path="/foodList"
             element={
               isAuthenticated ? (
-                <div>Welcome to the home page!</div>
+                <FoodList /> // Render FoodList on the home page if authenticated
               ) : (
                 <Navigate to="/login" />
               )
@@ -35,6 +39,13 @@ const App = () => {
           <Route
             path="/seasonalIngredients"
             element={<SeasonalIngredients />}
+          />
+          {/* Route to display details for a specific food */}
+          <Route path="/foods/:foodSlug" element={<FoodDetail />} />
+          {/* Route to display details for a specific certification */}
+          <Route
+            path="/foods/certification/:certificationName"
+            element={<CertificationDetail />}
           />
           <Route
             path="/rateVendorForm"

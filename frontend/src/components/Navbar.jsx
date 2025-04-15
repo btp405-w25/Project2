@@ -17,7 +17,7 @@ const Navbar = () => {
 
         <div className="space-x-4 flex items-center">
           <button
-            onClick={() => (window.location.href = "/home")}
+            onClick={() => (window.location.href = "/")}
             className="text-white hover:bg-green-700 px-4 py-2 rounded-lg transition"
           >
             Home
@@ -36,6 +36,12 @@ const Navbar = () => {
                 className="text-white hover:bg-green-700 px-4 py-2 rounded-lg transition"
               >
                 Ratings
+              </button>
+              <button
+                onClick={() => (window.location.href = "/foodList")}
+                className="text-white hover:bg-green-700 px-4 py-2 rounded-lg transition"
+              >
+                List
               </button>
               <button
                 onClick={handleLogout}
