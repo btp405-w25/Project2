@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 
+
 const RateVendorForm = () => {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(null);
@@ -35,7 +36,6 @@ const RateVendorForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const formDataToSend = new FormData();
     formDataToSend.append("vendor", vendor);
     formDataToSend.append("rating", rating);
@@ -45,14 +45,11 @@ const RateVendorForm = () => {
       "eco_friendly_packaging",
       formData.eco_friendly_packaging
     );
-
     if (formData.image) {
       formDataToSend.append("image", formData.image);
     }
-
     const token = localStorage.getItem("token");
     console.log("Token being sent:", token);
-
     try {
       const response = await fetch(
         "http://127.0.0.1:8084/polls/delivery_rating/",
@@ -65,18 +62,15 @@ const RateVendorForm = () => {
           credentials: "include",
         }
       );
-
       console.log("Form Data sent:", Object.fromEntries(formDataToSend));
-
       if (response.ok) {
         console.log("Form submitted successfully!");
-
         setShowSuccessMessage(true);
         setTimeout(() => {
-          setShowSuccessMessage(false);
+          // Redirect to the home page after the success message disappears
+          window.location.href = "/";
         }, 3000);
-
-        // Reset form
+        // Reset form (optional, as the page will redirect)
         setVendor("");
         setRating(0);
         setFormData({
@@ -89,11 +83,14 @@ const RateVendorForm = () => {
         console.log("Failed to submit form.");
         const errorData = await response.json();
         console.error("Error details:", errorData);
+        // Optionally handle error display to the user
       }
     } catch (error) {
       console.error("Error submitting form:", error);
+      // Optionally handle error display to the user
     }
   };
+ 
 
   return (
     <div className="max-w-xl mx-auto mt-10 bg-white p-6 rounded-xl shadow-lg">
