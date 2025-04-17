@@ -2,18 +2,19 @@
 FROM node:18-alpine AS builder
 
 WORKDIR /app
-COPY . .
+COPY package*.json ./
 RUN npm install
+COPY . .
 RUN npm run build
 
-# Stage 2: Serve using nginx
-FROM nginx:alpine
+# Stage 2: Serve using a simple HTTP server (since you're using Vite)
+FROM node:18-alpine
 
-# Copy build output from builder stage
-COPY --from=builder /app/dist /usr/share/nginx/html
+WORKDIR /app
+COPY --from=builder /app/dist ./dist
 
-# Copy custom nginx config if needed
-COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
+# Install serve package
+RUN npm install -g serve
 
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 5173
+CMD ["serve", "-s", "dist", "-l", "5173"]
