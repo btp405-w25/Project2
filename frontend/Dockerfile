@@ -1,16 +1,19 @@
-# Use an official Nginx image
+# Stage 1: Build the frontend using Node
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+COPY . .
+RUN npm install
+RUN npm run build
+
+# Stage 2: Serve using nginx
 FROM nginx:alpine
 
-# Set the working directory
-WORKDIR /usr/share/nginx/html
+# Copy build output from builder stage
+COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Copy the Vite build output
-COPY dist/ /usr/share/nginx/html/
-
-# Copy custom nginx config
+# Copy custom nginx config if needed
 COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
-# Expose the web server port
 EXPOSE 80
-
 CMD ["nginx", "-g", "daemon off;"]

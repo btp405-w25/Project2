@@ -1,5 +1,5 @@
 cd frontend
 # Build your React image
-docker build -t my-react-app .
-# Run your React container (maps localhost:3000 to container’s port 80)
-docker run -p 3000:80 my-react-app
+docker build -t my-frontend .
+# Run your React container 
+ docker run -p 5173:80 my-frontend
