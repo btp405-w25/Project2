@@ -35,13 +35,13 @@ const Navbar = () => {
                 onClick={() => (window.location.href = "/rateVendorForm")}
                 className="text-white hover:bg-green-700 px-4 py-2 rounded-lg transition"
               >
-                Ratings
+                Rate Vendor
               </button>
               <button
                 onClick={() => (window.location.href = "/foodList")}
                 className="text-white hover:bg-green-700 px-4 py-2 rounded-lg transition"
               >
-                List
+                Buy Products
               </button>
               <button
                 onClick={handleLogout}

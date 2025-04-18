@@ -73,10 +73,11 @@ const RateVendorForm = () => {
 
         setShowSuccessMessage(true);
         setTimeout(() => {
-          setShowSuccessMessage(false);
+          // Redirect to the home page after the success message disappears
+          window.location.href = "/";
         }, 3000);
 
-        // Reset form
+        // Reset form (optional, as the page will redirect)
         setVendor("");
         setRating(0);
         setFormData({
@@ -89,9 +90,11 @@ const RateVendorForm = () => {
         console.log("Failed to submit form.");
         const errorData = await response.json();
         console.error("Error details:", errorData);
+        // Optionally handle error display to the user
       }
     } catch (error) {
       console.error("Error submitting form:", error);
+      // Optionally handle error display to the user
     }
   };
 

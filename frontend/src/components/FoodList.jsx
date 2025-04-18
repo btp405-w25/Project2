@@ -51,7 +51,7 @@ function FoodList() {
           <div key={food.slug}>
             <div
               className={
-                "overflow-hidden transition-all duration-300 " + // Added classname
+                "overflow-hidden transition-all duration-300 " +
                 "border border-gray-200 rounded-md shadow-md hover:shadow-lg " +
                 "bg-white"
               }

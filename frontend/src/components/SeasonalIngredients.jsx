@@ -41,6 +41,12 @@ const SeasonalIngredients = () => {
       }
 
       const data = await response.json();
+      if (data.length === 0) {
+        setError("No ingredients found for the specified location and season.");
+        setIngredients([]);
+        return;
+      }
+
       setLocationTitle(location);
       setIngredients(data);
       setShowRecipes(false);
@@ -91,7 +97,7 @@ const SeasonalIngredients = () => {
                   <input
                     id="location"
                     type="text"
-                    placeholder="Enter city or region..."
+                    placeholder="Enter city or region "
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
                     className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
