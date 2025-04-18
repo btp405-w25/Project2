@@ -1,0 +1,16 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+.venv
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# IDEs and editors (optional)
+.vscode/
+.idea/
+*.swp
+*.swo
